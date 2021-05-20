@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 
-import { VStack, Heading, Button, Input } from "@chakra-ui/react";
+import { VStack, Heading, Button } from "@chakra-ui/react";
 import { QuizType } from "./types/quiz_types";
 import { Difficulty, fetchQuizData } from "./API";
 import { QuestionCard } from "./components/QuestionCard";
@@ -38,6 +38,9 @@ function App() {
     else setGameOver(true);
   };
 
+  if (gameOver) {
+  }
+
   return (
     <div
       style={{
@@ -58,7 +61,7 @@ function App() {
           QUIZ APP
         </Heading>
 
-        {gameOver ? (
+        {!isLoading ? (
           <Button
             colorScheme="teal"
             isLoading={isLoading}
@@ -81,15 +84,20 @@ function App() {
 
         {!isLoading && !gameOver ? (
           <QuestionCard
-            question={
-              questions[questionNumber].question &&
-              questions[questionNumber].question
-            }
+            question={questions[questionNumber].question}
             questionNo={questionNumber}
             score={score}
             options={questions[questionNumber].option}
             callback={handleSubmit}
           />
+        ) : null}
+
+        {gameOver ? (
+          <div>
+            <Heading as="h2" size="lg" mt="16" color="grey">
+              You are done. Your score was {score}
+            </Heading>
+          </div>
         ) : null}
       </VStack>
     </div>

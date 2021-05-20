@@ -51,20 +51,22 @@ export const QuestionCard: React.FC<questionPropsType> = ({
           {options.map((currentOption: string, ind: number) => {
             return (
               <div key={ind}>
-                <input
-                  type="radio"
-                  name="opt"
-                  required
-                  value={currentOption}
-                  checked={selectedAns === currentOption}
-                  onChange={handleSelection}
-                />{" "}
-                {currentOption}
+                <label>
+                  <input
+                    type="radio"
+                    name="opt"
+                    required
+                    value={currentOption}
+                    checked={selectedAns === currentOption}
+                    onChange={handleSelection}
+                  />{" "}
+                  {currentOption}
+                </label>
               </div>
             );
           })}
 
-          <Button type="submit" mt="4" w="150px">
+          <Button type="submit" mt="4" w="150px" colorScheme="blue">
             Next
           </Button>
         </FormControl>
