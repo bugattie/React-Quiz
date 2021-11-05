@@ -38,7 +38,7 @@ jobs:
       run: npx browserslist@latest --update-db
       
     - name: creating build
-      run: yarn run build
+      run: sudo yarn run build
       
     - name: intalling surge
       run: npm install --global surge
