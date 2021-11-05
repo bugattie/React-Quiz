@@ -36,6 +36,9 @@ jobs:
       
     - name: creating build
       run: yarn build
+
+    - name: browser update
+      run: npx browserslist@latest --update-db
       
     - name: intalling surge
       run: npm install --global surge
